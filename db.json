@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "user_type": 1,
+      "password": "admin",
+      "user_last_connection": "",
+      "registration_code": null,
+      "active": 1,
+      "udg_code": "u1920877",
+      "createdAt": "0000-00-00 00:00:00",
+      "updatedAt": "0000-00-00 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "profesor",
+      "email": "profesor@gmail.com",
+      "user_type": 2,
+      "password": "profesor",
+      "user_last_connection": "",
+      "registration_code": null,
+      "active": 1,
+      "udg_code": "u1920877",
+      "createdAt": "2018-02-01 00:00:00",
+      "updatedAt": "2018-02-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "alumne",
+      "email": "alumne@gmail.com",
+      "user_type": 3,
+      "password": "alumne",
+      "user_last_connection": "",
+      "registration_code": null,
+      "active": 1,
+      "udg_code": "u1919191",
+      "createdAt": "2018-02-01 00:00:00",
+      "updatedAt": "2018-02-01 00:00:00"
+    },
+    {
+      "email": "jordi0189@gmail.com",
+      "password": "11111111",
+      "id": 4
+    },
+    {
+      "email": "u1920877@udg.edu",
+      "password": "11111111",
+      "id": 5
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "11111111",
+      "id": 6
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "11111111",
+      "id": 7
+    }
+  ],
+  "cursos": [
+    {
+      "description": "Una tasca mes",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "description": "Una altra tasca per fer",
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "description": "Holaaaaaa",
+      "userId": 1,
+      "id": 4
+    }
+  ],
+  "images": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
