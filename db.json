@@ -42,20 +42,44 @@
   ],
   "cursos": [
     {
-      "description": "Una tasca mes",
-      "userId": 1,
+      "name": "Eng. software avançada",
+      "code": 1,
+      "credits":15,
       "id": 2
     },
     {
-      "description": "Una altra tasca per fer",
-      "userId": 2,
+      "name": "CAES",
+      "code": 1,
+      "credits":15,
       "id": 3
     },
     {
-      "description": "Holaaaaaa",
-      "userId": 1,
+      "name": "Desenvolupament d'entorns web",
+      "code": 1,
+      "credits":15,
       "id": 4
     }
+  ],
+  "acl":[
+    {
+      "component":"UsersPage",
+      "type1":"1",
+      "type2":"0",
+      "type3":"0"
+    },
+    {
+      "component":"ManageSubjectsPage",
+      "type1":"1",
+      "type2":"0",
+      "type3":"0"
+    },
+    {
+      "component":"ViewSubjectsPage",
+      "type1":"0",
+      "type2":"1",
+      "type3":"0"
+    }
+
   ],
   "images": [],
   "profile": {

@@ -3,7 +3,7 @@ const util = require('./util')
 
 var userSchemaLogin = {
     properties: {
-        username: {
+        email: {
             type: 'string',
             required: true
         },
@@ -72,24 +72,24 @@ module.exports = function (server, router) {
         if (!v.valid)
             util.sendError(res, 400, util.Error.ERR_BAD_REQUEST, util.jsonSchemaError(v))
         else {
-            var user = router.db.get('users').find(['username', req.body.username]).value()
+            var user = router.db.get('users').find(['email', req.body.email]).value()
             if (user) {
                 if (user.id === req.session.userId)
                     util.sendError(res, 400, util.Error.ERR_BAD_REQUEST, 'User already authenticated')
                 else if (user.password === req.body.password) {
                     req.session.userId = user.id
-                    req.session.username = user.username
+                    req.session.email = user.email
                     util.jsonResponse(res, user)
                 } else
                     util.sendError(res, 400, util.Error.ERR_BAD_REQUEST, 'Password do not match')
             } else
-                util.jsonResponse(res, 'User <' + req.body.username + '> does not exists')
+                util.jsonResponse(res, 'User <' + req.body.email + '> does not exists')
         }
     })
 
     server.post('/users/logout', util.isAuthenticated, function (req, res) {
         delete req.session['userId']
-        delete req.session['username']
+        delete req.session['email']
         util.jsonResponse(res, 'User logged out successfully')
     })
 
@@ -101,7 +101,7 @@ module.exports = function (server, router) {
             router.db
                 .get('users')
                 .insert({
-                    username: req.body.username,
+                    name: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
                     user_type: req.user_type,
