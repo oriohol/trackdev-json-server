@@ -122,5 +122,27 @@ module.exports = function (server, router) {
         util.jsonResponse(res, user)
     })
 
+    server.get('/participacions/alumne', util.isAuthenticated, function (req, res) {
+        var participacions = router.db.get('participacions').find(['usuari_id', req.session.userId]).value()
+        util.jsonResponse(res, participacions)
+    });
+
+    server.get('/participacions/professor', util.isAuthenticated, function (req, res) {
+        var cursos = [];
+        var participacions = router.db.get('curs_professor').find(['usuari_id', req.session.userId]).value()
+        if (participacions && participacions.length > 0){
+            for (var i = 0; i< participacions.length; i++){
+                var curs = router.db.get('cursos').find(['id', participacions[i]["curs_id"]]).value()
+                cursos.push(curs);
+            };
+        }
+        util.jsonResponse(res, cursos)
+    });
+
+    server.get('/professors', util.isAuthenticated, function (req, res) {
+        var user = router.db.get('users').find(['user_type', "2"]).value()
+        util.jsonResponse(res, user)
+    });
+
 
 }
