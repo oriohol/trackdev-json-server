@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken')
+
 const validate = require('jsonschema').validate
 const util = require('./util')
 
@@ -63,6 +65,21 @@ module.exports = function (server, router) {
         server.get('/' + entity, util.isAuthenticated, authMiddleware_GET_Collection)
     }
 
+
+    const SECRET_KEY = 'jujujujuju?'
+
+    // const EXPIRES_IN = '10000' // 1h
+
+    // Create a token from a payload 
+    function createToken(payload, expiresIn = '1h'){ 
+        return jwt.sign(payload, SECRET_KEY, {expiresIn})
+    }
+
+    // Verify the token 
+    function verifyToken(token){
+        return  jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ?  decode : err)
+    }
+
     // Call this function for each entity that has ownership wrt users
     //addAuthorization(server, 'orders')
 
@@ -79,6 +96,12 @@ module.exports = function (server, router) {
                 else if (user.password === req.body.password) {
                     req.session.userId = user.id
                     req.session.email = user.email
+
+                    const email = user.email
+                    const password = user.password
+                    const access_token = createToken({email, password})
+                    user.token = access_token
+
                     util.jsonResponse(res, user)
                 } else
                     util.sendError(res, 400, util.Error.ERR_BAD_REQUEST, 'Password do not match')
@@ -86,6 +109,17 @@ module.exports = function (server, router) {
                 util.jsonResponse(res, 'User <' + req.body.email + '> does not exists')
         }
     })
+
+    server.post('/users/token', function (req, res) {
+        const verify = verifyToken(req.body.token)
+        let email = verify.email
+        let validToken = false
+        if (verify.email) {
+            validToken = true
+        }
+        util.jsonResponse(res, {validToken, email})
+    })
+
 
     server.post('/users/logout', util.isAuthenticated, function (req, res) {
         delete req.session['userId']
