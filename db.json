@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "name": "profesor1",
+      "name": "Josep Planas Vendrell",
       "email": "profesor@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "name": "profesor2",
+      "name": "Carles Carlemany Terrats",
       "email": "profesor2@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -41,7 +41,7 @@
     },
     {
       "id": 8,
-      "name": "profesor3",
+      "name": "Christian Gómez García",
       "email": "profesor3@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -109,7 +109,7 @@
     {
       "name": "Eng. software avançada",
       "code": 1,
-      "credits":15,
+      "credits":12,
       "id": 1
     },
     {
@@ -119,6 +119,28 @@
       "id": 2
     }
   ],
+  "curs_user":[
+    {
+      "id":1,
+      "curs_id":1,
+      "usuari_id":4
+    },
+    {
+      "id":2,
+      "curs_id":2,
+      "usuari_id":4
+    },
+    {
+      "id":3,
+      "curs_id":3,
+      "usuari_id":4
+    },
+    {
+      "id":4,
+      "curs_id":4,
+      "usuari_id":4
+    }
+  ],
   "curs_professor":[
     {
       "id":1,
@@ -126,9 +148,29 @@
       "usuari_id":2
     },
     {
-      "id":1,
+      "id":2,
       "curs_id":1,
       "usuari_id":3
+    },
+    {
+      "id":3,
+      "curs_id":2,
+      "usuari_id":2
+    },
+    {
+      "id":4,
+      "curs_id":2,
+      "usuari_id":3
+    },
+    {
+      "id":5,
+      "curs_id":3,
+      "usuari_id":8
+    },
+    {
+      "id":6,
+      "curs_id":4,
+      "usuari_id":2
     }
   ],
   "cursos":[
@@ -137,14 +179,28 @@
       "assignatura_id":1,
       "data_inici":"25/01/2017",
       "data_fi":"30/06/2017",
-      "maxim_alumnes_grup":5
+      "maxim_alumnes_grup":4
     },
     {
       "id":2,
       "assignatura_id":1,
       "data_inici":"25/01/2018",
       "data_fi":"30/06/2018",
-      "maxim_alumnes_grup":5
+      "maxim_alumnes_grup":4
+    },
+    {
+      "id":3,
+      "assignatura_id":2,
+      "data_inici":"25/01/2017",
+      "data_fi":"30/06/2017",
+      "maxim_alumnes_grup":6
+    },
+    {
+      "id":4,
+      "assignatura_id":2,
+      "data_inici":"25/01/2018",
+      "data_fi":"30/06/2018",
+      "maxim_alumnes_grup":6
     }
   ],
   "sprints":[
@@ -184,8 +240,8 @@
       "nota_grup":null
     },
     {
-      "id":1,
-      "cur2Id":1,
+      "id":2,
+      "cursId":1,
       "nota_grup":null
     },
     {
