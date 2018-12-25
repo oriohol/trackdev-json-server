@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "name": "Josep Planas Vendrell",
+      "name": "Mark Elliot Zuckerberg",
       "email": "profesor@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "name": "Carles Carlemany Terrats",
+      "name": "Steven Paul Jobs",
       "email": "profesor2@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -41,7 +41,7 @@
     },
     {
       "id": 8,
-      "name": "Christian Gómez García",
+      "name": "William Henry Gates",
       "email": "profesor3@gmail.com",
       "user_type": 2,
       "password": "profesor",
@@ -107,13 +107,13 @@
   ],
   "assignatures": [
     {
-      "name": "Eng. software avançada",
+      "name": "Projecte de Desenvolupament del Software",
       "code": 1,
       "credits":12,
       "id": 1
     },
     {
-      "name": "CAES",
+      "name": "Conceptes Avançats d'Enginyeria del Software",
       "code": 1,
       "credits":15,
       "id": 2
@@ -286,6 +286,15 @@
     {
       "id":4,
       "curs_id":1,
+      "grup_id":1,
+      "usuari_id":4,
+      "nota_alumne":null,
+      "percentatge_aportat":null,
+      "actiu":1
+    },
+    {
+      "id":5,
+      "curs_id":2,
       "grup_id":1,
       "usuari_id":4,
       "nota_alumne":null,

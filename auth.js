@@ -151,7 +151,7 @@ module.exports = function (server, router) {
 				.write()
 			util.jsonResponse(res, 'User created successfully')
 		}
-	})
+  })
 
 
 	server.get('/cursos/:id', function (req, res) {
@@ -172,6 +172,7 @@ module.exports = function (server, router) {
       }
 
       const infoUserCurs = {
+        idCurs: curs.id,
         nomAssig: assig.name,
         creditsAssig: assig.credits,
         dataIniciCurs: curs.data_inici,
@@ -183,6 +184,39 @@ module.exports = function (server, router) {
     }
 
 		util.jsonResponse(res, infoUserCursos)
+  })
+  
+  server.get('/sprints/:userId/:cursId', function (req, res) {
+
+    const participacio = router.db.get('participacions').filter(['usuari_id', parseInt(req.params.userId)]).find(['curs_id', parseInt(req.params.cursId)]).value()
+
+    const sprintsGrup = router.db.get('sprint_grups').filter(['grup_id', participacio.grup_id]).value()
+
+    let sprintsInfo = []
+    for (let i=0; i<sprintsGrup.length; i++) {
+      const sprint = router.db.get('sprints').find(['id', sprintsGrup[i].sprint_id]).value()
+
+      const histories = router.db.get('histories').filter(['sprint_group_id', sprintsGrup[i].id]).value()
+
+      let infoHistories = []
+      for (let i=0; i<histories.length; i++) {
+        const infoHistoria = {
+          idHistoria: histories[i].id,
+          nomHistoria: histories[i].nom,
+          puntsHistoria: histories[i].punts_historia
+        }
+        infoHistories.push(infoHistoria)
+      }
+
+      const sprintInfo = {
+        dataIniciSprint: sprint.data_inici,
+        dataFiSprint: sprint.data_fi,
+        infoHistories
+      }
+      sprintsInfo.push(sprintInfo)
+    }
+
+		util.jsonResponse(res, sprintsInfo)
 	})
 
 
