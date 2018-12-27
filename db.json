@@ -207,30 +207,58 @@
     {
       "id":1,
       "numero_sprint":1,
-      "cursId":1,
+      "cursId":2,
       "data_inici": "05/02/2018",
       "data_fi": "04/03/2018"
     },
     {
       "id":2,
       "numero_sprint":2,
-      "cursId":1,
+      "cursId":2,
       "data_inici": "05/03/2018",
       "data_fi": "04/04/2018"
     },
     {
       "id":3,
       "numero_sprint":3,
-      "cursId":1,
+      "cursId":2,
       "data_inici": "05/04/2018",
       "data_fi": "04/05/2018"
     },
     {
       "id":4,
       "numero_sprint":4,
-      "cursId":1,
+      "cursId":2,
       "data_inici": "05/05/2018",
       "data_fi": "04/06/2018"
+    },
+    {
+      "id":5,
+      "numero_sprint":1,
+      "cursId":1,
+      "data_inici": "05/02/2017",
+      "data_fi": "04/03/2017"
+    },
+    {
+      "id":6,
+      "numero_sprint":2,
+      "cursId":1,
+      "data_inici": "05/03/2017",
+      "data_fi": "04/04/2017"
+    },
+    {
+      "id":7,
+      "numero_sprint":3,
+      "cursId":1,
+      "data_inici": "05/04/2017",
+      "data_fi": "04/05/2017"
+    },
+    {
+      "id":8,
+      "numero_sprint":4,
+      "cursId":1,
+      "data_inici": "05/05/2017",
+      "data_fi": "04/06/2017"
     }
   ],
   "grups":[
@@ -295,7 +323,7 @@
     {
       "id":5,
       "curs_id":2,
-      "grup_id":1,
+      "grup_id":2,
       "usuari_id":4,
       "nota_alumne":null,
       "percentatge_aportat":null,
@@ -305,38 +333,58 @@
   "sprint_grups":[
     {
       "id": 1,
-      "sprint_id":1,
+      "sprint_id":5,
       "grup_id":1,
       "numero_sprint":1,
-      "data_inici": "05/02/2018",
-      "data_fi": "04/03/2018",
       "estat":1
     },
     {
-      "id": 1,
-      "sprint_id":2,
+      "id": 2,
+      "sprint_id":6,
       "grup_id":1,
       "numero_sprint":2,
-      "data_inici": "05/03/2018",
-      "data_fi": "04/04/2018",
       "estat":0
     },
     {
-      "id": 1,
-      "sprint_id":3,
+      "id": 3,
+      "sprint_id":7,
       "grup_id":1,
       "numero_sprint":3,
-      "data_inici": "05/04/2018",
-      "data_fi": "04/05/2018",
       "estat":0
     },
     {
-      "id": 1,
-      "sprint_id":4,
+      "id": 4,
+      "sprint_id":8,
       "grup_id":1,
       "numero_sprint":4,
-      "data_inici": "05/05/2018",
-      "data_fi": "04/06/2018",
+      "estat":0
+    },
+    {
+      "id": 5,
+      "sprint_id":1,
+      "grup_id":2,
+      "numero_sprint":1,
+      "estat":1
+    },
+    {
+      "id": 6,
+      "sprint_id":2,
+      "grup_id":2,
+      "numero_sprint":2,
+      "estat":0
+    },
+    {
+      "id": 7,
+      "sprint_id":3,
+      "grup_id":2,
+      "numero_sprint":3,
+      "estat":0
+    },
+    {
+      "id": 8,
+      "sprint_id":4,
+      "grup_id":2,
+      "numero_sprint":4,
       "estat":0
     }
   ],
@@ -345,18 +393,36 @@
       "id":1,
       "usuari_assignat":4,
       "sprint_group_id":1,
-      "nom":"historia1",
+      "nom":"1- Gestionar esdeveniments",
       "descripcio":"Aquesta historia es una prova",
       "punts_historia":5,
       "estat":0
     },
     {
-      "id":1,
-      "usuari_assignat":null,
-      "sprint_group_id":null,
-      "nom":"historia2",
+      "id":2,
+      "usuari_assignat":4,
+      "sprint_group_id":1,
+      "nom":"2- Gestionar usuaris",
       "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
-      "punts_historia":5,
+      "punts_historia":15,
+      "estat":0
+    },
+    {
+      "id":3,
+      "usuari_assignat":4,
+      "sprint_group_id":1,
+      "nom":"3- Gestionar drames",
+      "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
+      "punts_historia":41,
+      "estat":0
+    },
+    {
+      "id":4,
+      "usuari_assignat":4,
+      "sprint_group_id":2,
+      "nom":"1- Gestionar molts i molts drames",
+      "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
+      "punts_historia":99,
       "estat":0
     }
   ],
