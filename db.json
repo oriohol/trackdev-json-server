@@ -290,7 +290,7 @@
       "grup_id":1,
       "usuari_id":5,
       "nota_alumne":null,
-      "percentatge_aportat":null,
+      "percentatge_aportat":0.25,
       "actiu":1
     },
     {

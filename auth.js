@@ -303,6 +303,25 @@ module.exports = function (server, router) {
     }
 
 		util.jsonResponse(res, resposta)
+  })
+  
+  server.get('/groupUsers/:groupId', function (req, res) {
+
+    const participacionsGrup = router.db.get('participacions').filter(['grup_id', parseInt(req.params.groupId)]).value()
+
+    const infoUsuaris = []
+    for (let i=0; i<participacionsGrup.length; i++){
+      const usuari = router.db.get('users').find(['id', participacionsGrup[i].usuari_id]).value()
+
+      const infoUsuari = {
+        nom: usuari.name,
+        email: usuari.email,
+        percentatgeAportat: participacionsGrup[i].percentatge_aportat
+      }
+      infoUsuaris.push(infoUsuari)
+    }
+
+		util.jsonResponse(res, infoUsuaris)
 	})
 
 
