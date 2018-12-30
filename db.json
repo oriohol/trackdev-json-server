@@ -391,7 +391,7 @@
   "histories":[
     {
       "id":1,
-      "usuari_assignat":4,
+      "grup_id":1,
       "sprint_group_id":1,
       "nom":"1- Gestionar esdeveniments",
       "descripcio":"Aquesta historia es una prova",
@@ -400,28 +400,28 @@
     },
     {
       "id":2,
-      "usuari_assignat":4,
+      "grup_id":1,
       "sprint_group_id":1,
       "nom":"2- Gestionar usuaris",
-      "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
+      "descripcio":"Aquesta historia 2 es una prova",
       "punts_historia":15,
       "estat":0
     },
     {
       "id":3,
-      "usuari_assignat":4,
-      "sprint_group_id":1,
+      "grup_id":1,
+      "sprint_group_id":null,
       "nom":"3- Gestionar drames",
-      "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
-      "punts_historia":41,
+      "descripcio":"Aquesta historia 3 es una prova d'un text una mica mes llarg, pero encara podria arribar a ser més llarg però no ho es",
+      "punts_historia":48,
       "estat":0
     },
     {
       "id":4,
-      "usuari_assignat":4,
+      "grup_id":1,
       "sprint_group_id":2,
-      "nom":"1- Gestionar molts i molts drames",
-      "descripcio":"Aquesta historia 2 es una prova que forma part del backlog",
+      "nom":"4- Gestionar molts i molts drames",
+      "descripcio":"Aquesta historia 4 es una prova",
       "punts_historia":99,
       "estat":0
     }
@@ -430,27 +430,24 @@
     {
       "id":1,
       "usuari_assignat":4,
-      "sprint_group_id":null,
       "historia_id":1,
-      "nom":"tasca1",
+      "nom":"Crear Esdeveniment",
+      "descripcio":"Aquesta es la descripció de la tasca tasca assignada a la historia 1, es una prova",
+      "estat":0
+    },
+    {
+      "id":2,
+      "usuari_assignat":4,
+      "historia_id":1,
+      "nom":"Modificar Esdeveniment",
       "descripcio":"Aquesta tasca assignada a la historia 1 es una prova",
-      "estat":0
+      "estat":1
     },
     {
-      "id":1,
-      "usuari_assignat":4,
-      "sprint_group_id":1,
-      "historia_id":null,
-      "nom":"tasca1",
-      "descripcio":"Aquesta tasca assignada a la sprint1 es una prova",
-      "estat":0
-    },
-    {
-      "id":1,
-      "usuari_assignat":4,
-      "sprint_group_id":null,
-      "historia_id":null,
-      "nom":"tasca1",
+      "id":3,
+      "usuari_assignat":null,
+      "historia_id":3,
+      "nom":"tasca3",
       "descripcio":"Aquesta tasca es una prova que forma part del backlog",
       "estat":0
     }

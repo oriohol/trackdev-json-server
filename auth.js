@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const moment = require('moment')
 
 const validate = require('jsonschema').validate
 const util = require('./util')
@@ -192,13 +193,17 @@ module.exports = function (server, router) {
 
     const sprintsGrup = router.db.get('sprint_grups').filter(['grup_id', participacio.grup_id]).value()
 
-    let sprintsInfo = []
+    const TODAY = moment('07/03/2017', 'DD/MM/YYYY')
+
+    let sprintActiu = null
+    const sprintsFuturs = []
+    const sprintsPassats = []
     for (let i=0; i<sprintsGrup.length; i++) {
       const sprint = router.db.get('sprints').find(['id', sprintsGrup[i].sprint_id]).value()
 
       const histories = router.db.get('histories').filter(['sprint_group_id', sprintsGrup[i].id]).value()
 
-      let infoHistories = []
+      const infoHistories = []
       for (let i=0; i<histories.length; i++) {
         const infoHistoria = {
           idHistoria: histories[i].id,
@@ -213,13 +218,92 @@ module.exports = function (server, router) {
         dataFiSprint: sprint.data_fi,
         infoHistories
       }
-      sprintsInfo.push(sprintInfo)
+      if (TODAY > moment(sprint.data_inici, 'DD/MM/YYYY') && TODAY < moment(sprint.data_fi, 'DD/MM/YYYY')) {
+        sprintActiu = sprintInfo
+      }
+      else if (TODAY > moment(sprint.data_fi, 'DD/MM/YYYY')) {
+        sprintsPassats.push(sprintInfo)
+      }
+      else {
+        sprintsFuturs.push(sprintInfo)
+      }
     }
 
-		util.jsonResponse(res, sprintsInfo)
+    //backlog
+    const historiesBacklog = router.db.get('histories').filter(['grup_id', participacio.grup_id]).filter(['sprint_group_id', null]).value()
+    const infoHistoriesBacklog = []
+    for (let i=0; i<historiesBacklog.length; i++) {
+      infoHistoriesBacklog.push({
+        idHistoria: historiesBacklog[i].id,
+        nomHistoria: historiesBacklog[i].nom,
+        puntsHistoria: historiesBacklog[i].punts_historia
+      })
+    }
+
+    const historiesBacklogInfo = {
+      infoHistories: infoHistoriesBacklog
+    }
+
+    //ordenació
+    sprintsFuturs.sort((a, b) => { // de vell a nou
+      if (moment(a.dataIniciSprint, 'DD/MM/YYYY') > moment(b.dataIniciSprint, 'DD/MM/YYYY')) {
+        return 1
+      }
+      if (moment(a.dataIniciSprint, 'DD/MM/YYYY') < moment(b.dataIniciSprint, 'DD/MM/YYYY')) {
+        return -1
+      }
+      return 0
+    })
+
+    sprintsPassats.sort((a, b) => { // de vell a nou
+      if (moment(a.dataIniciSprint, 'DD/MM/YYYY') > moment(b.dataIniciSprint, 'DD/MM/YYYY')) {
+        return 1
+      }
+      if (moment(a.dataIniciSprint, 'DD/MM/YYYY') < moment(b.dataIniciSprint, 'DD/MM/YYYY')) {
+        return -1
+      }
+      return 0
+    })
+
+    const resposta = {
+      grupId: participacio.grup_id,
+      sprintActiu,
+      historiesBacklog: historiesBacklogInfo,
+      sprintsFuturs,
+      sprintsPassats
+    }
+
+		util.jsonResponse(res, resposta)
 	})
 
+  server.get('/tasks/:storyId', function (req, res) {
 
+    const historia = router.db.get('histories').find(['id', parseInt(req.params.storyId)]).value()
+
+    const tasques = router.db.get('tasques').filter(['historia_id', parseInt(req.params.storyId)]).value()
+
+    const infoTasques = []
+
+    for (let i=0; i<tasques.length; i++) {
+      const usuariAssignat = router.db.get('users').find(['id', tasques[i].usuari_assignat]).value()
+
+      const infoTasca = {
+        idTasca: tasques[i].id,
+        nomTasca: tasques[i].nom,
+        descripcioTasca: tasques[i].descripcio,
+        estatTasca: tasques[i].estat,
+        nomAssignat: usuariAssignat ? usuariAssignat.name : null
+      }
+      infoTasques.push(infoTasca)
+    }
+
+    const resposta = {
+      descripcioHistoria: historia.descripcio,
+      tasques: infoTasques,
+    }
+
+		util.jsonResponse(res, resposta)
+	})
 
 
 
