@@ -108,12 +108,14 @@
   "assignatures": [
     {
       "name": "Projecte de Desenvolupament del Software",
+      "acronym": "PDS",
       "code": 1,
       "credits":12,
       "id": 1
     },
     {
       "name": "Conceptes Avançats d'Enginyeria del Software",
+      "acronym": "CAES",
       "code": 1,
       "credits":15,
       "id": 2

@@ -175,6 +175,7 @@ module.exports = function (server, router) {
       const infoUserCurs = {
         idCurs: curs.id,
         nomAssig: assig.name,
+        acronym: assig.acronym,
         creditsAssig: assig.credits,
         dataIniciCurs: curs.data_inici,
         dataFiCurs: curs.data_fi,
