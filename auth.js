@@ -156,11 +156,11 @@ module.exports = function (server, router) {
 
 
 	server.get('/cursos/:id', function (req, res) {
-		const cursosUser = router.db.get('curs_user').filter(['usuari_id', parseInt(req.params.id)]).value()
+    const participacions = router.db.get('participacions').filter(['usuari_id', parseInt(req.params.id)]).value()
     
     const infoUserCursos = []
-    for (let i = 0; i < cursosUser.length; i++) {
-      const curs = router.db.get('cursos').find(['id', cursosUser[i].curs_id]).value()
+    for (let i = 0; i < participacions.length; i++) {
+      const curs = router.db.get('cursos').find(['id', participacions[i].curs_id]).value()
 
       const assig = router.db.get('assignatures').find(['id', curs.assignatura_id]).value()
 
@@ -323,7 +323,31 @@ module.exports = function (server, router) {
     }
 
 		util.jsonResponse(res, infoUsuaris)
+  })
+  
+  server.get('/profile/:userId', function (req, res) {
+
+    const participacions = router.db.get('participacions').filter(['usuari_id', parseInt(req.params.userId)]).value()
+
+    const infoCursos = []
+    for (let i=0; i<participacions.length; i++) {
+      const curs = router.db.get('cursos').find(['id', participacions[0].curs_id]).value()
+
+      const assignatura = router.db.get('assignatures').find(['id', curs.assignatura_id]).value()
+
+      const infoCurs = {
+        acronym: assignatura.acronym,
+        dataInici: curs.data_inici,
+        dataFi: curs.data_fi,
+        percentatgeAportat: participacions[0].percentatge_aportat,
+        nota: participacions[0].nota_alumne
+      }
+      infoCursos.push(infoCurs)
+    }
+    
+		util.jsonResponse(res, infoCursos)
 	})
+
 
 
 

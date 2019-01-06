@@ -121,28 +121,6 @@
       "id": 2
     }
   ],
-  "curs_user":[
-    {
-      "id":1,
-      "curs_id":1,
-      "usuari_id":4
-    },
-    {
-      "id":2,
-      "curs_id":2,
-      "usuari_id":4
-    },
-    {
-      "id":3,
-      "curs_id":3,
-      "usuari_id":4
-    },
-    {
-      "id":4,
-      "curs_id":4,
-      "usuari_id":4
-    }
-  ],
   "curs_professor":[
     {
       "id":1,
@@ -318,8 +296,8 @@
       "curs_id":1,
       "grup_id":1,
       "usuari_id":4,
-      "nota_alumne":null,
-      "percentatge_aportat":null,
+      "nota_alumne":6.5,
+      "percentatge_aportat":0.2,
       "actiu":1
     },
     {
