@@ -185,6 +185,17 @@ module.exports = function (server, router) {
       infoUserCursos.push(infoUserCurs)
     }
 
+    //ordenació
+    infoUserCursos.sort((a, b) => { // vell a nou
+      if (moment(a.dataFiCurs, 'DD/MM/YYYY') > moment(b.dataFiCurs, 'DD/MM/YYYY')) {
+        return 1
+      }
+      if (moment(a.dataFiCurs, 'DD/MM/YYYY') < moment(b.dataFiCurs, 'DD/MM/YYYY')) {
+        return -1
+      }
+      return 0
+    })
+
 		util.jsonResponse(res, infoUserCursos)
   })
   
@@ -372,6 +383,17 @@ module.exports = function (server, router) {
         infoTasques.push(infoTasca)
       }
     }
+
+    //ordenació
+    infoTasques.sort((a, b) => {
+      if (moment(a.dataFiSprint, 'DD/MM/YYYY') > moment(b.dataFiSprint, 'DD/MM/YYYY')) {
+        return 1
+      }
+      if (moment(a.dataFiSprint, 'DD/MM/YYYY') < moment(b.dataFiSprint, 'DD/MM/YYYY')) {
+        return -1
+      }
+      return 0
+    })
     
 		util.jsonResponse(res, infoTasques)
 	})

@@ -239,6 +239,13 @@
       "cursId":1,
       "data_inici": "05/05/2017",
       "data_fi": "04/06/2017"
+    },
+    {
+      "id":9,
+      "numero_sprint":1,
+      "cursId":3,
+      "data_inici": "05/05/2017",
+      "data_fi": "04/06/2017"
     }
   ],
   "grups":[
@@ -260,6 +267,11 @@
     {
       "id":4,
       "cursId":1,
+      "nota_grup":null
+    },
+    {
+      "id":5,
+      "cursId":2,
       "nota_grup":null
     }
   ],
@@ -304,6 +316,24 @@
       "id":5,
       "curs_id":2,
       "grup_id":2,
+      "usuari_id":4,
+      "nota_alumne":null,
+      "percentatge_aportat":null,
+      "actiu":1
+    },
+    {
+      "id":6,
+      "curs_id":3,
+      "grup_id":5,
+      "usuari_id":4,
+      "nota_alumne":null,
+      "percentatge_aportat":null,
+      "actiu":1
+    },
+    {
+      "id":7,
+      "curs_id":4,
+      "grup_id":null,
       "usuari_id":4,
       "nota_alumne":null,
       "percentatge_aportat":null,
@@ -366,6 +396,13 @@
       "grup_id":2,
       "numero_sprint":4,
       "estat":0
+    },
+    {
+      "id": 9,
+      "sprint_id":9,
+      "grup_id":5,
+      "numero_sprint":1,
+      "estat":0
     }
   ],
   "histories":[
@@ -404,6 +441,15 @@
       "descripcio":"Aquesta historia 4 es una prova",
       "punts_historia":99,
       "estat":0
+    },
+    {
+      "id":5,
+      "grup_id":5,
+      "sprint_group_id":9,
+      "nom":"1- Gestionar Elefants",
+      "descripcio":"Aquesta es la descripció completa de gestionar elefants",
+      "punts_historia":16,
+      "estat":0
     }
   ],
   "tasques":[
@@ -430,8 +476,36 @@
       "nom":"tasca3",
       "descripcio":"Aquesta tasca es una prova que forma part del backlog",
       "estat":0
+    },
+    {
+      "id":4,
+      "usuari_assignat":4,
+      "historia_id":5,
+      "nom":"Crear elefant",
+      "descripcio":"Aquesta tasca es crearan els elefants",
+      "estat":0
+    },
+    {
+      "id":5,
+      "usuari_assignat":4,
+      "historia_id":5,
+      "nom":"Modificar elefant",
+      "descripcio":"Aquesta tasca es modificaran les propietats dels elefants",
+      "estat":0
+    },
+    {
+      "id":6,
+      "usuari_assignat":4,
+      "historia_id":5,
+      "nom":"Alimentar elefant",
+      "descripcio":"Aquesta tasca es donara aliment a l'elefant",
+      "estat":0
     }
   ],
+
+
+
+
 
   "acl":[
     {
