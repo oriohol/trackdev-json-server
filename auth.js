@@ -346,6 +346,34 @@ module.exports = function (server, router) {
     }
     
 		util.jsonResponse(res, infoCursos)
+  })
+  
+  server.get('/todo/:userId', function (req, res) {
+
+    const tasques = router.db.get('tasques').filter(['usuari_assignat', parseInt(req.params.userId)]).value()
+
+    const infoTasques = []
+    for (let i=0; i<tasques.length; i++) {
+      if (tasques[i].estat !== 2) {
+        const historia = router.db.get('histories').find(['id', tasques[i].historia_id]).value()
+        const sprintGrup = router.db.get('sprint_grups').find(['id', historia.sprint_group_id]).value()
+        const sprint = router.db.get('sprints').find(['id', sprintGrup.sprint_id]).value()
+        const curs = router.db.get('cursos').find(['id', sprint.cursId]).value()
+        const assignatura = router.db.get('assignatures').find(['id', curs.assignatura_id]).value()
+
+
+        const infoTasca = {
+          nomTasca: tasques[i].nom,
+          descripcioTasca: tasques[i].descripcio,
+          estatTasca: tasques[i].estat,
+          acronymAssignatura: assignatura.acronym,
+          dataFiSprint: sprint.data_fi
+        }
+        infoTasques.push(infoTasca)
+      }
+    }
+    
+		util.jsonResponse(res, infoTasques)
 	})
 
 
