@@ -342,7 +342,7 @@ module.exports = function (server, router) {
 
     const infoCursos = []
     for (let i=0; i<participacions.length; i++) {
-      const curs = router.db.get('cursos').find(['id', participacions[0].curs_id]).value()
+      const curs = router.db.get('cursos').find(['id', participacions[i].curs_id]).value()
 
       const assignatura = router.db.get('assignatures').find(['id', curs.assignatura_id]).value()
 
@@ -350,8 +350,8 @@ module.exports = function (server, router) {
         acronym: assignatura.acronym,
         dataInici: curs.data_inici,
         dataFi: curs.data_fi,
-        percentatgeAportat: participacions[0].percentatge_aportat,
-        nota: participacions[0].nota_alumne
+        percentatgeAportat: participacions[i].percentatge_aportat,
+        nota: participacions[i].nota_alumne
       }
       infoCursos.push(infoCurs)
     }
